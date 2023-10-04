@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "3e1e0036-df20-4682-ba9f-cf002c591e8f",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "15672233",
+		"_collection_link": "https://red-space-54449.postman.co/workspace/Adapty~4a23f313-ac89-4276-ba68-74f76a52aeba/collection/15672233-3e1e0036-df20-4682-ba9f-cf002c591e8f?action=share&source=collection_link&creator=15672233"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"var responseBody= pm.response.json();                         \r",
+							"console.log(responseBody.data[2].first_name);\r",
+							"pm.collectionVariables.set(\"first_name\", responseBody.data[1].first_name);\r",
+							"pm.test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Your first name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[1].first_name).to.eql(\"Janet\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"122\",\r\n    \"createdAt\": \"2023-09-26T12:22:44.748Z\",\r\n    \"test_Name\": \"tetst\",\r\n    \"var\": \"{{first_name}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "ide",
+			"value": ""
+		},
+		{
+			"key": "testData",
+			"value": ""
+		},
+		{
+			"key": "first_name",
+			"value": ""
+		}
+	]
+}
